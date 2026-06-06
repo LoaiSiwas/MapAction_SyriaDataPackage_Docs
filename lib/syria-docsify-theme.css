@@ -1,0 +1,631 @@
+/**
+ * Syria IHDP — Docsify offline theme
+ * Palette aligned with Starlight syria-theme.css
+ * All colors scoped to html[data-theme="light"] | html[data-theme="dark"] only.
+ */
+
+html {
+  --syria-navy: #0c4a6e;
+  --syria-navy-deep: #082f49;
+  --syria-cyan: #0ea5e9;
+  --syria-cyan-bright: #38bdf8;
+  --syria-gold: #f59e0b;
+  --syria-gold-soft: #fcd34d;
+  --ihdp-font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial,
+    sans-serif;
+  --ihdp-mono: 'Cascadia Code', 'Segoe UI Mono', Consolas, ui-monospace, monospace;
+}
+
+/* —— Light mode —— */
+html[data-theme='light'] {
+  --theme-color: #0284c7;
+  --ihdp-bg: #f4f8fb;
+  --ihdp-bg-elevated: #ffffff;
+  --ihdp-bg-sidebar: #ffffff;
+  --ihdp-bg-code: #e8f0f6;
+  --ihdp-text: #1e3a52;
+  --ihdp-text-muted: #4a6278;
+  --ihdp-text-faint: #64748b;
+  --ihdp-heading: #0c4a6e;
+  --ihdp-link: #0284c7;
+  --ihdp-link-hover: #0c4a6e;
+  --ihdp-border: #e2e8f0;
+  --ihdp-border-strong: #cbd5e1;
+  --ihdp-accent: #0ea5e9;
+  --ihdp-accent-soft: #e0f2fe;
+  --ihdp-shadow: 0 4px 24px rgba(12, 74, 110, 0.08);
+  --ihdp-shadow-sm: 0 1px 3px rgba(12, 74, 110, 0.06);
+  --ihdp-table-stripe: #f0f7fc;
+  --ihdp-scrollbar: rgba(12, 74, 110, 0.25);
+}
+
+/* —— Dark mode —— */
+html[data-theme='dark'] {
+  --theme-color: #38bdf8;
+  --ihdp-bg: #0a1628;
+  --ihdp-bg-elevated: #0d1f33;
+  --ihdp-bg-sidebar: #0d1f33;
+  --ihdp-bg-code: #0c1829;
+  --ihdp-bg-code-inline: #152a40;
+  --ihdp-text: #c8d6e3;
+  --ihdp-text-muted: #94a8bc;
+  --ihdp-text-faint: #6b8499;
+  --ihdp-heading: #e8f4fc;
+  --ihdp-link: #38bdf8;
+  --ihdp-link-hover: #fcd34d;
+  --ihdp-border: #1e3a52;
+  --ihdp-border-strong: #2a4a66;
+  --ihdp-accent: #38bdf8;
+  --ihdp-accent-soft: #0c3d5c;
+  --ihdp-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --ihdp-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --ihdp-table-stripe: #0f2438;
+  --ihdp-scrollbar: rgba(56, 189, 248, 0.35);
+}
+
+/* Ambient page background */
+html[data-theme='light'] body::before,
+html[data-theme='dark'] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+html[data-theme='light'] body::before {
+  background:
+    radial-gradient(ellipse 100% 70% at 90% 8%, rgba(14, 165, 233, 0.12), transparent 52%),
+    radial-gradient(ellipse 80% 55% at 4% 92%, rgba(245, 158, 11, 0.08), transparent 48%),
+    var(--ihdp-bg);
+}
+
+html[data-theme='dark'] body::before {
+  background:
+    radial-gradient(ellipse 120% 80% at 100% 0%, rgba(14, 165, 233, 0.14), transparent 55%),
+    radial-gradient(ellipse 90% 60% at 0% 100%, rgba(245, 158, 11, 0.07), transparent 50%),
+    var(--ihdp-bg);
+}
+
+/* Base layout */
+html[data-theme='light'] body,
+html[data-theme='dark'] body {
+  font-family: var(--ihdp-font);
+  letter-spacing: 0.01em;
+}
+
+html[data-theme='light'] body {
+  background-color: var(--ihdp-bg);
+  color: var(--ihdp-text);
+}
+
+html[data-theme='dark'] body {
+  background-color: var(--ihdp-bg);
+  color: var(--ihdp-text);
+}
+
+html[data-theme='light'] .progress,
+html[data-theme='dark'] .progress {
+  background: linear-gradient(90deg, var(--syria-cyan), var(--syria-gold));
+  height: 3px;
+}
+
+/* Theme toggle */
+html[data-theme='light'] .ihdp-theme-toggle,
+html[data-theme='dark'] .ihdp-theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 18px;
+  z-index: 1000;
+  font-family: var(--ihdp-font);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+html[data-theme='light'] .ihdp-theme-toggle {
+  color: var(--ihdp-heading);
+  background: var(--ihdp-bg-elevated);
+  border: 1px solid var(--ihdp-border-strong);
+  box-shadow: var(--ihdp-shadow-sm);
+}
+
+html[data-theme='light'] .ihdp-theme-toggle:hover {
+  border-color: var(--ihdp-accent);
+  color: var(--ihdp-link);
+}
+
+html[data-theme='dark'] .ihdp-theme-toggle {
+  color: var(--ihdp-heading);
+  background: var(--ihdp-bg-elevated);
+  border: 1px solid var(--ihdp-border-strong);
+  box-shadow: var(--ihdp-shadow-sm);
+}
+
+html[data-theme='dark'] .ihdp-theme-toggle:hover {
+  border-color: var(--ihdp-accent);
+  color: var(--ihdp-link-hover);
+}
+
+/* Sidebar */
+html[data-theme='light'] .sidebar,
+html[data-theme='dark'] .sidebar {
+  width: 300px;
+  border-right: 1px solid var(--ihdp-border);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+html[data-theme='light'] .sidebar {
+  background: var(--ihdp-bg-sidebar);
+  color: var(--ihdp-text);
+  box-shadow: var(--ihdp-shadow-sm);
+}
+
+html[data-theme='dark'] .sidebar {
+  background: var(--ihdp-bg-sidebar);
+  color: var(--ihdp-text);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme='light'] .sidebar > h1,
+html[data-theme='dark'] .sidebar > h1 {
+  margin: 0 0 1.25rem;
+  padding: 0 1.25rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+}
+
+html[data-theme='light'] .sidebar .app-name-link,
+html[data-theme='dark'] .sidebar .app-name-link {
+  background: linear-gradient(120deg, var(--syria-navy), var(--syria-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+html[data-theme='dark'] .sidebar .app-name-link {
+  background: linear-gradient(120deg, var(--syria-cyan-bright), var(--syria-gold-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html[data-theme='light'] .sidebar ul li a,
+html[data-theme='dark'] .sidebar ul li a {
+  color: var(--ihdp-text-muted);
+  font-size: 0.875rem;
+  border-radius: 6px;
+  margin: 1px 0;
+  padding: 2px 8px;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+html[data-theme='light'] .sidebar ul li a:hover,
+html[data-theme='dark'] .sidebar ul li a:hover {
+  color: var(--ihdp-link);
+  text-decoration: none;
+  background: var(--ihdp-accent-soft);
+}
+
+html[data-theme='light'] .sidebar ul li.active > a,
+html[data-theme='dark'] .sidebar ul li.active > a {
+  color: var(--ihdp-link);
+  font-weight: 600;
+  border-right: 3px solid var(--ihdp-accent);
+  background: var(--ihdp-accent-soft);
+}
+
+html[data-theme='light'] .sidebar li.folder > p,
+html[data-theme='light'] .sidebar li.folder > .sidebar-folder-title,
+html[data-theme='dark'] .sidebar li.folder > p,
+html[data-theme='dark'] .sidebar li.folder > .sidebar-folder-title {
+  color: var(--ihdp-heading);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+html[data-theme='light'] .sidebar::-webkit-scrollbar-thumb,
+html[data-theme='dark'] .sidebar::-webkit-scrollbar-thumb {
+  background: var(--ihdp-scrollbar);
+  border-radius: 4px;
+}
+
+html[data-theme='light'] .sidebar-toggle,
+html[data-theme='dark'] .sidebar-toggle {
+  background: var(--ihdp-bg-elevated);
+  border-top: 1px solid var(--ihdp-border);
+}
+
+html[data-theme='light'] .sidebar-toggle span,
+html[data-theme='dark'] .sidebar-toggle span {
+  background: var(--ihdp-accent);
+}
+
+/* Collapsible folders */
+html[data-theme='light'] .sidebar-nav li.folder > ul,
+html[data-theme='dark'] .sidebar-nav li.folder > ul {
+  display: none;
+}
+
+html[data-theme='light'] .sidebar-nav li.folder.open > ul,
+html[data-theme='dark'] .sidebar-nav li.folder.open > ul {
+  display: block;
+}
+
+html[data-theme='light'] .sidebar-nav li.folder > p,
+html[data-theme='light'] .sidebar-nav li.folder > .sidebar-folder-title,
+html[data-theme='dark'] .sidebar-nav li.folder > p,
+html[data-theme='dark'] .sidebar-nav li.folder > .sidebar-folder-title {
+  cursor: pointer;
+  margin: 0.5em 0 0.2em;
+}
+
+html[data-theme='light'] .sidebar-nav li.folder > p::before,
+html[data-theme='light'] .sidebar-nav li.folder > .sidebar-folder-title::before,
+html[data-theme='dark'] .sidebar-nav li.folder > p::before,
+html[data-theme='dark'] .sidebar-nav li.folder > .sidebar-folder-title::before {
+  content: '▸ ';
+  display: inline-block;
+  width: 1em;
+  color: var(--ihdp-accent);
+}
+
+html[data-theme='light'] .sidebar-nav li.folder.open > p::before,
+html[data-theme='light'] .sidebar-nav li.folder.open > .sidebar-folder-title::before,
+html[data-theme='dark'] .sidebar-nav li.folder.open > p::before,
+html[data-theme='dark'] .sidebar-nav li.folder.open > .sidebar-folder-title::before {
+  content: '▾ ';
+}
+
+/* Main content */
+html[data-theme='light'] .content,
+html[data-theme='dark'] .content {
+  background: transparent;
+}
+
+html[data-theme='light'] .markdown-section,
+html[data-theme='dark'] .markdown-section {
+  max-width: 52rem;
+  padding: 2.5rem 2rem 4rem;
+}
+
+html[data-theme='light'] .markdown-section h1,
+html[data-theme='light'] .markdown-section h2,
+html[data-theme='light'] .markdown-section h3,
+html[data-theme='light'] .markdown-section h4,
+html[data-theme='dark'] .markdown-section h1,
+html[data-theme='dark'] .markdown-section h2,
+html[data-theme='dark'] .markdown-section h3,
+html[data-theme='dark'] .markdown-section h4 {
+  color: var(--ihdp-heading);
+  font-weight: 700;
+}
+
+html[data-theme='light'] .markdown-section h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--ihdp-border);
+  padding-bottom: 0.35em;
+  margin-bottom: 0.75em;
+}
+
+html[data-theme='dark'] .markdown-section h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--ihdp-border);
+  padding-bottom: 0.35em;
+  margin-bottom: 0.75em;
+}
+
+html[data-theme='light'] .markdown-section h2 {
+  font-size: 1.5rem;
+  margin-top: 2em;
+}
+
+html[data-theme='dark'] .markdown-section h2 {
+  font-size: 1.5rem;
+  margin-top: 2em;
+}
+
+html[data-theme='light'] .markdown-section p,
+html[data-theme='light'] .markdown-section li,
+html[data-theme='dark'] .markdown-section p,
+html[data-theme='dark'] .markdown-section li {
+  line-height: 1.65;
+  color: var(--ihdp-text);
+}
+
+html[data-theme='light'] .markdown-section strong,
+html[data-theme='dark'] .markdown-section strong {
+  color: var(--ihdp-heading);
+}
+
+html[data-theme='light'] .markdown-section a,
+html[data-theme='dark'] .markdown-section a {
+  color: var(--ihdp-link);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+html[data-theme='light'] .markdown-section a:hover,
+html[data-theme='dark'] .markdown-section a:hover {
+  color: var(--ihdp-link-hover);
+  border-bottom-color: currentColor;
+}
+
+html[data-theme='light'] .markdown-section blockquote,
+html[data-theme='dark'] .markdown-section blockquote {
+  border-left: 4px solid var(--ihdp-accent);
+  background: var(--ihdp-accent-soft);
+  color: var(--ihdp-text-muted);
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1.25rem;
+  margin: 1.5em 0;
+}
+
+html[data-theme='light'] .markdown-section code,
+html[data-theme='dark'] .markdown-section code {
+  font-family: var(--ihdp-mono);
+  font-size: 0.88em;
+}
+
+/* Override vue.css (#f8f8f8 / #e96900) — scoped per theme */
+html[data-theme='light'] .markdown-section :not(pre) > code {
+  background: var(--ihdp-bg-code);
+  color: var(--syria-navy-deep);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  margin: 0 0.15em;
+  white-space: pre-wrap;
+}
+
+html[data-theme='dark'] .markdown-section :not(pre) > code {
+  background: var(--ihdp-bg-code-inline);
+  color: var(--syria-cyan-bright);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  margin: 0 0.15em;
+  white-space: pre-wrap;
+}
+
+html[data-theme='light'] .markdown-section pre,
+html[data-theme='dark'] .markdown-section pre {
+  background: var(--ihdp-bg-code);
+  border: 1px solid var(--ihdp-border);
+  border-radius: 8px;
+  box-shadow: var(--ihdp-shadow-sm);
+}
+
+html[data-theme='light'] .markdown-section pre > code,
+html[data-theme='dark'] .markdown-section pre > code {
+  background: transparent;
+  color: var(--ihdp-text);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 0;
+  padding: 1.25rem 1.35rem;
+  white-space: pre;
+  display: block;
+}
+
+html[data-theme='dark'] .markdown-section pre:after {
+  color: var(--ihdp-text-faint);
+}
+
+html[data-theme='light'] .markdown-section table,
+html[data-theme='dark'] .markdown-section table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border: 1px solid var(--ihdp-border);
+  border-radius: 8px;
+  background: var(--ihdp-bg-elevated);
+  box-shadow: var(--ihdp-shadow-sm);
+}
+
+html[data-theme='light'] .markdown-section th,
+html[data-theme='dark'] .markdown-section th {
+  background: var(--ihdp-accent-soft);
+  color: var(--ihdp-heading);
+  font-weight: 600;
+  border: 1px solid var(--ihdp-border);
+  padding: 0.6rem 0.85rem;
+}
+
+html[data-theme='light'] .markdown-section td,
+html[data-theme='dark'] .markdown-section td {
+  border: 1px solid var(--ihdp-border);
+  padding: 0.55rem 0.85rem;
+  color: var(--ihdp-text);
+}
+
+html[data-theme='light'] .markdown-section tr:nth-child(2n) {
+  background: var(--ihdp-table-stripe);
+}
+
+html[data-theme='dark'] .markdown-section tr:nth-child(2n) {
+  background: var(--ihdp-table-stripe);
+}
+
+html[data-theme='light'] .markdown-section hr,
+html[data-theme='dark'] .markdown-section hr {
+  border: none;
+  border-top: 1px solid var(--ihdp-border);
+  margin: 2em 0;
+}
+
+/* Layer preview thumbnails */
+html[data-theme='light'] .markdown-section img[src*='thumbnails'],
+html[data-theme='dark'] .markdown-section img[src*='thumbnails'] {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--ihdp-border);
+  box-shadow: var(--ihdp-shadow);
+}
+
+html[data-theme='light'] .markdown-section img[src*='syria-hero'],
+html[data-theme='dark'] .markdown-section img[src*='syria-hero'] {
+  max-width: min(100%, 420px);
+  border-radius: 12px;
+  margin: 0.5rem 0 1.25rem;
+  box-shadow: var(--ihdp-shadow);
+}
+
+/* Home page — partner logos forced to one row (wide PNGs capped per Starlight) */
+html[data-theme='light'] .markdown-section .ihdp-partners,
+html[data-theme='dark'] .markdown-section .ihdp-partners,
+html[data-theme='light'] .markdown-section .partner-grid,
+html[data-theme='dark'] .markdown-section .partner-grid {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(0.5rem, 2.5vw, 2rem) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 1.25rem 0 1rem !important;
+  padding: 0.5rem 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+html[data-theme='light'] .markdown-section .ihdp-partners > a,
+html[data-theme='dark'] .markdown-section .ihdp-partners > a,
+html[data-theme='light'] .markdown-section .partner-grid > a,
+html[data-theme='dark'] .markdown-section .partner-grid > a {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html[data-theme='light'] .markdown-section .ihdp-partners img,
+html[data-theme='dark'] .markdown-section .ihdp-partners img,
+html[data-theme='light'] .markdown-section .partner-grid img,
+html[data-theme='dark'] .markdown-section .partner-grid img,
+html[data-theme='light'] .markdown-section img[src*='partners/'],
+html[data-theme='dark'] .markdown-section img[src*='partners/'] {
+  display: block !important;
+  height: auto !important;
+  max-height: 44px !important;
+  max-width: min(130px, 21vw) !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  vertical-align: middle !important;
+}
+
+/* If Docsify wraps each logo in its own <p>, keep them inline on one line */
+html[data-theme='light'] .markdown-section p:has(> a > img[src*='partners/']),
+html[data-theme='dark'] .markdown-section p:has(> a > img[src*='partners/']),
+html[data-theme='light'] .markdown-section p:has(> img[src*='partners/']),
+html[data-theme='dark'] .markdown-section p:has(> img[src*='partners/']) {
+  display: inline-block !important;
+  margin: 0 0.35rem !important;
+  padding: 0 !important;
+  vertical-align: middle !important;
+}
+
+html[data-theme='light'] .markdown-section .ihdp-partners-tagline,
+html[data-theme='dark'] .markdown-section .ihdp-partners-tagline {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--ihdp-text-muted);
+}
+
+html[data-theme='light'] .markdown-section img[alt*='MapAction'],
+html[data-theme='light'] .markdown-section img[alt*='iMMAP'],
+html[data-theme='dark'] .markdown-section img[alt*='MapAction'],
+html[data-theme='dark'] .markdown-section img[alt*='iMMAP'] {
+  filter: none;
+}
+
+/* Home page lead emphasis */
+html[data-theme='light'] .markdown-section > p:first-of-type strong,
+html[data-theme='dark'] .markdown-section > p:first-of-type strong {
+  color: var(--ihdp-link);
+}
+
+/* Loading state */
+html[data-theme='light'] div#app:empty,
+html[data-theme='dark'] div#app:empty {
+  color: var(--ihdp-text-muted);
+  font-size: 1.125rem;
+}
+
+/* Override default vue.css hard-coded colors */
+html[data-theme='light'] .markdown-section .anchor span,
+html[data-theme='dark'] .markdown-section .anchor span {
+  color: inherit;
+}
+
+html[data-theme='dark'] .markdown-section pre .token.comment,
+html[data-theme='dark'] .markdown-section pre .token.prolog,
+html[data-theme='dark'] .markdown-section pre .token.doctype {
+  color: #8b9cb0;
+}
+
+html[data-theme='dark'] .markdown-section pre .token.punctuation,
+html[data-theme='dark'] .markdown-section pre .token.operator {
+  color: #94a8bc;
+}
+
+html[data-theme='dark'] .markdown-section pre .token.string,
+html[data-theme='dark'] .markdown-section pre .token.attr-value {
+  color: #7dd3a8;
+}
+
+html[data-theme='dark'] .markdown-section pre .token.keyword,
+html[data-theme='dark'] .markdown-section pre .token.tag {
+  color: #fcd34d;
+}
+
+html[data-theme='dark'] .markdown-section pre .token.function,
+html[data-theme='dark'] .markdown-section pre .token.class-name {
+  color: #38bdf8;
+}
+
+html[data-theme='dark'] .markdown-section pre .token.number,
+html[data-theme='dark'] .markdown-section pre .token.boolean {
+  color: #fbbf24;
+}
+
+html[data-theme='light'] body.close .sidebar-toggle,
+html[data-theme='dark'] body.close .sidebar-toggle {
+  background: var(--ihdp-bg-elevated);
+}
+
+@media (max-width: 768px) {
+  html[data-theme='light'] .ihdp-theme-toggle,
+  html[data-theme='dark'] .ihdp-theme-toggle {
+    top: 10px;
+    right: 10px;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.7rem;
+  }
+}
