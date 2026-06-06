@@ -34,6 +34,11 @@ This documentation site is the **accessible, offline-friendly catalogue** of wha
 
 ### Partners
 
-<div class="ihdp-partners partner-grid" markdown="0"><a href="https://mapaction.org" title="MapAction"><img src="assets/partners/MapAction.png" alt="MapAction" /></a><a href="https://www.immap.org" title="iMMAP"><img src="assets/partners/iMMAPlogo.png" alt="iMMAP" /></a><a href="https://www.cartong.org" title="CartONG"><img src="assets/partners/CartONG_logo.png" alt="CartONG" /></a><a href="https://www.hotosm.org" title="HOT"><img src="assets/partners/humanitarian-openstreetmap-team.png" alt="Humanitarian OpenStreetMap Team" /></a></div>
+<div style="display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; gap:1rem; overflow-x:auto; margin:1rem 0;">
+  <a href="https://mapaction.org" title="MapAction"><img src="assets/partners/MapAction.png" alt="MapAction" style="height:42px; width:auto; max-width:160px;" /></a>
+  <a href="https://www.immap.org" title="iMMAP"><img src="assets/partners/iMMAPlogo.png" alt="iMMAP" style="height:42px; width:auto; max-width:160px;" /></a>
+  <a href="https://www.cartong.org" title="CartONG"><img src="assets/partners/CartONG_logo.png" alt="CartONG" style="height:42px; width:auto; max-width:160px;" /></a>
+  <a href="https://www.hotosm.org" title="HOT"><img src="assets/partners/humanitarian-openstreetmap-team.png" alt="Humanitarian OpenStreetMap Team" style="height:42px; width:auto; max-width:160px;" /></a>
+</div>
 
 <p class="ihdp-partners-tagline"><em>H2H Fund · Syria humanitarian data package</em></p>
